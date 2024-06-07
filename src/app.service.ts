@@ -1,6 +1,14 @@
 import { Injectable } from '@nestjs/common'
 import { createStorefrontApiClient, StorefrontApiClient } from '@shopify/storefront-api-client'
 
+export const shopQuery = `
+    query {
+      shop {
+        name
+        id
+      }
+    }`
+
 @Injectable()
 export class AppService {
   private readonly storefrontClient: StorefrontApiClient
@@ -18,13 +26,6 @@ export class AppService {
   }
 
   async shopQuery() {
-    const shopQuery = `
-    query {
-      shop {
-        name
-        id
-      }
-    }`
     const { data, errors, extensions } = await this.storefrontClient.request(shopQuery)
     console.debug(data, errors, extensions)
     return data && data['shop']
