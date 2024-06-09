@@ -9,7 +9,7 @@ const expectedShopResponse = {
   id: 'gid://shopify/Shop/38190448773',
 }
 
-describe('NockBack tests', () => {
+describe('NockBack', () => {
   beforeAll(() => {
     nock.back.fixtures = __dirname + '/__nocks__'
     nock.back.setMode('update')
@@ -64,7 +64,7 @@ describe('NockBack tests', () => {
   })
 })
 
-describe('using nock directly', () => {
+describe('NockOnly', () => {
   it('should display the calls', async () => {
     nock.recorder.clear()
     nock.recorder.rec()
